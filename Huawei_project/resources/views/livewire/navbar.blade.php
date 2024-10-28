@@ -45,6 +45,15 @@
                 </a>
             </li>
 
+            <!-- Voucher List Link -->
+            <li>
+                <a href="{{ route('voucher-list') }}" 
+                   class="flex items-center px-3 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white transition ease-in-out duration-150">
+                    <i class="fas fa-chart-bar mr-3"></i>
+                    <span class="font-medium">Voucher List</span>
+                </a>
+            </li>
+
             <!-- Import File Link -->
             <li>
                 <a href="{{ route('import-file') }}" 

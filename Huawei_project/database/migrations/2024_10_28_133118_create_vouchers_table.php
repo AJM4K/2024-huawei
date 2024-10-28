@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('vouchers', function (Blueprint $table) {
             $table->id();
             $table->string('voucher_id');
-            $table->foreignId('smr_number')->references('smr_number')->on('sub_material_requests');
+            $table->string('smr_number');
             $table->string('voucher_image');
             $table->timestamps();
         });

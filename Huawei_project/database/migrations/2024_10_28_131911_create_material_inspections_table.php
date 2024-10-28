@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('material_inspections', function (Blueprint $table) {
             $table->id();
+            $table->string('ma_number');
+            $table->string('po_number'); // Foreign key to project_operations
             $table->timestamps();
         });
     }

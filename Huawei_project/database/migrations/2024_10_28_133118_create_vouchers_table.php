@@ -11,9 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('project_operations', function (Blueprint $table) {
+        Schema::create('vouchers', function (Blueprint $table) {
             $table->id();
-            $table->string('po_number')->unique();
+            $table->string('voucher_id');
+            $table->foreignId('smr_number')->references('smr_number')->on('sub_material_requests');
+            $table->string('voucher_image');
             $table->timestamps();
         });
     }
@@ -23,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('project_operations');
+        Schema::dropIfExists('vouchers');
     }
 };

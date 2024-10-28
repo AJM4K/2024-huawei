@@ -11,9 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('project_operations', function (Blueprint $table) {
+        Schema::create('po_smr_item', function (Blueprint $table) {
             $table->id();
-            $table->string('po_number')->unique();
+            $table->string('po_number');
+            $table->string('item_number');
+            $table->string('smr_number');
+            $table->integer('quantity_requested');
             $table->timestamps();
         });
     }
@@ -23,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('project_operations');
+        Schema::dropIfExists('po_smr_item');
     }
 };

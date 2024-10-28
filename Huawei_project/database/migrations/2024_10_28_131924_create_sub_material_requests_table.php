@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('sub_material_requests', function (Blueprint $table) {
             $table->id();
+            $table->string('smr_number');
+            $table->string('po_number'); // Foreign key to project_operations
+            $table->string('site_code');
+            $table->string('person_name');
+            $table->text('comments')->nullable();
             $table->timestamps();
         });
     }

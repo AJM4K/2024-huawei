@@ -100,7 +100,11 @@ class VoucherCreate extends Component
                     'voucher_number' => $voucher->voucher_id,
                     'quantity_delivered' => $item['quantity'],
                 ]);
+                DB::table('po_in_item')
+                ->where('item_number', '=', $item['item_number'])
+                ->update(['delivered_quantity_out' => DB::raw('delivered_quantity_out + ' . $item['quantity'])]);
             }
+
 
             // Clear the selected items and show a success message
             $this->selectedItems = [];

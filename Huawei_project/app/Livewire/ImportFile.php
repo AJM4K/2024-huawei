@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Imports\MaterialInspectionImport;
+use App\Imports\SubMaterialRequestImport;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Maatwebsite\Excel\Facades\Excel;
@@ -33,6 +34,9 @@ class ImportFile extends Component
 
         if ($this->subMaterialRequestFile) {
             // $this->subMaterialRequestFile->store('subMaterialRequestFile', 'public');
+            $import = new SubMaterialRequestImport();
+            Excel::import($import, $this->subMaterialRequestFile);
+         dd($import->smr_number);
             session()->flash('message', 'Sub Material Request File uploaded successfully!');
 
         }

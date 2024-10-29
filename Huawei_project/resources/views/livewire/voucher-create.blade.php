@@ -26,10 +26,32 @@
         </div>
     <h3 class="text-lg font-semibold mt-4 mb-2">Add Item</h3>
     <div class="flex space-x-2 mb-4">
-        <div class="flex-1">
-            <input type="text" class="form-control border border-gray-300 rounded-md p-2" placeholder="Item Number" wire:model="itemNumber">
-            @error('itemNumber') <span class="text-danger">{{ $message }}</span> @enderror
+    <div class="flex-1">
+    <div class="relative">
+        <select id="itemNumber" class="block appearance-none w-full bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out py-2 pl-3 pr-10 text-gray-900 leading-tight hover:border-blue-400" wire:model="itemNumber">
+            <option value="" disabled selected>Select Item Number</option>
+            <?php
+                use Illuminate\Support\Facades\DB;
+                $poSmrItems = DB::table('po_smr_item')
+                    ->where('po_number', $poId)
+                    ->where('smr_number', $smrId)
+                    ->get();
+            ?>
+            @foreach ($poSmrItems as $poSmrItem)
+                <option value="{{ $poSmrItem->item_number }}">{{ $poSmrItem->item_number }}</option>
+            @endforeach
+        </select>
+        <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+            <svg class="w-4 h-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 10l5 5 5-5H7z"/>
+            </svg>
         </div>
+    </div>
+    @error('itemNumber') 
+        <span class="text-sm text-red-600 mt-1">{{ $message }}</span> 
+    @enderror
+</div>
+
         <div class="flex-1">
             <input type="text" class="form-control border border-gray-300 rounded-md p-2" placeholder="Description" wire:model="itemDescription">
             @error('itemDescription') <span class="text-danger">{{ $message }}</span> @enderror

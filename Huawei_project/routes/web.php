@@ -4,6 +4,7 @@ use App\Http\Controllers\PoController;
 use App\Livewire\VoucherCreate;
 use App\Livewire\Dashboard;
 use App\Livewire\ImportFile;
+use App\Livewire\ItemPage;
 use App\Livewire\MADetail;
 use App\Livewire\MAList;
 use App\Livewire\PODetail;
@@ -37,3 +38,4 @@ Route::get('/po-list/{po_id}/smr-list/{smr_id}/voucher-create', VoucherCreate::c
 
 Route::get('/voucher-list', VoucherList::class)->name('voucher-list');
 Route::get('/voucher-list/{voucher_id}', VoucherDetail::class)->name('voucher-detail');
+Route::get('/items', ItemPage::class)->name('items');

@@ -13,6 +13,7 @@
         @error('materialInspectionFile') <span class="text-danger">{{ $message }}</span> @enderror
     </div>
 
+
     <div class="mt-4">
         <h2 class="font-semibold mb-2">Upload Sub Material Request File</h2>
         <input type="file" class="form-control border border-gray-300 rounded-md p-2" wire:model="subMaterialRequestFile" id="subMaterialRequestFile">

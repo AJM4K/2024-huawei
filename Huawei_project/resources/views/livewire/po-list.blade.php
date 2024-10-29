@@ -34,16 +34,16 @@
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm">
                             {{ DB::table('po_in_item')
-                                ->where('po_number', $po->po_number )->count() }}
+                                ->where('po_number', $po->po_number )->sum('quantity_in') }}
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm">
                             {{ DB::table('po_in_item')
-                                ->where('po_number', $po->po_number )->count() - DB::table('po_out_item')
-                                ->where('po_number', $po->po_number )->count() }}
+                                ->where('po_number', $po->po_number )->sum('quantity_in') - DB::table('po_out_item')
+                                ->where('po_number', $po->po_number )->sum('quantity_delivered') }}
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm">
                             {{ DB::table('po_out_item')
-                                ->where('po_number', $po->po_number )->count() }}
+                                ->where('po_number', $po->po_number )->sum('quantity_delivered') }}
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm">
                             <a href="{{ route('po-detail', ['po_id' => $po->po_number]) }}" class="text-blue-600 hover:text-blue-800">

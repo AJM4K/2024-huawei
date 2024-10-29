@@ -21,15 +21,30 @@
                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">PO Number</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">SMR Number</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Quantity Requested</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Quantity remaining</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Quantity delivered</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">VHrs</th>
+                        
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
                     @foreach ($smr_items as $item)
                         <tr>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $item->id }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $item->item_number }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $item->po_number }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $item->smr_number }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $item->quantity_requested }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ DB::table('po_in_item')->where('item_number', $item->item_number)->where('po_number', $item->po_number)->sum('quantity_in') - DB::table('po_in_item')->where('item_number', $item->item_number)->where('po_number', $item->po_number)->sum('delivered_quantity_out') }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ DB::table('po_out_item')->where('item_number', $item->item_number)->where('po_number', $item->po_number)->where('smr_number', $item->smr_number)->sum('quantity_delivered') }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                @foreach (  DB::table('po_out_item')->select('voucher_number')->where('item_number', $item->item_number)->where('po_number', $item->po_number)->where('smr_number', $item->smr_number)->distinct()->get()  as $vhrs) 
+                                
+                                <a href="{{ route('voucher-detail', ['voucher_id' => $vhrs->voucher_number]) }}" class="text-blue-600 hover:text-blue-800">
+                                    {{ $vhrs->voucher_number }},
+                                </a>
+                                @endforeach
+
+                             </td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -52,7 +67,7 @@
                 <tbody class="bg-white divide-y divide-gray-200">
                     @foreach ($vouchers as $voucher)
                         <tr>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $voucher->id }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $voucher->voucher_id }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $voucher->smr_number }}</td>
                          <td>  <a href="{{ route('voucher-detail', ['voucher_id' => $voucher->voucher_id]) }}" class="text-blue-600 hover:text-blue-800">
                                 View Details

@@ -1,4 +1,4 @@
-huawei management version 2 
+huawei management version 2 mvp
 
 **current futures:**
 
@@ -21,7 +21,6 @@ huawei management version 2
   - Import Voucher items
   - Export Inventory report with SMR out and balance in invenotry and so on
 
-
 **required technologies:**
 
 - ChatGPT Plus ( free also acceptable )
@@ -34,9 +33,6 @@ huawei management version 2
 - node js framework ( node js runtime + npm node package manager )
 - Tailwind css
 - Flutter
-
-
-
 
 some errors and links:
 

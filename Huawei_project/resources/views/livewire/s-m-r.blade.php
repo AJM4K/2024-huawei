@@ -1,6 +1,10 @@
+<div class="container mx-auto mt-8 px-4">
+    <h1 class="text-3xl font-semibold text-gray-900 mb-6">SMR List</h1>
+
+
 <div class="overflow-x-auto">
-    <table class="table-auto w-full">
-        <thead class="bg-gray-100">
+    <table class="min-w-full table-auto">
+        <thead class="bg-gray-50">
             <tr>
                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">SMR Code</th>
                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">PO Code</th>
@@ -10,11 +14,11 @@
                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">SMR Status</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="divide-y divide-gray-200">
             @foreach ($smrs as $s_m_r)
-                <tr>
+                <tr class="hover:bg-gray-50 transition duration-200">
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        <a href="{{ route('smr-detail', ['smr_code' => $s_m_r->smr_code]) }}">
+                        <a href="{{ route('smr-detail', ['smr_code' => $s_m_r->smr_code]) }}" class="text-blue-600 hover:text-blue-800 transition duration-200">
                             {{ $s_m_r->smr_code }}
                         </a>
                     </td>
@@ -27,4 +31,5 @@
             @endforeach
         </tbody>
     </table>
+</div>
 </div>

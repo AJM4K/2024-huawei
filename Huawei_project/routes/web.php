@@ -1,18 +1,18 @@
 <?php
 
-use App\Http\Controllers\PoController;
-use App\Livewire\VoucherCreate;
+
 use App\Livewire\Dashboard;
 use App\Livewire\ImportFile;
-use App\Livewire\ItemPage;
+use App\Livewire\Inventory;
+use App\Livewire\MA;
 use App\Livewire\MADetail;
-use App\Livewire\MAList;
-use App\Livewire\PODetail;
-use App\Livewire\PoList;
+use App\Livewire\Program;
+use App\Livewire\Project;
+use App\Livewire\ProjectDetail;
+use App\Livewire\SMR;
 use App\Livewire\SMRDetail;
-use App\Livewire\SMRList;
+use App\Livewire\Voucher;
 use App\Livewire\VoucherDetail;
-use App\Livewire\VoucherList;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -20,22 +20,27 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', Dashboard::class)->name('dashboard');
-
-Route::get('/po-list', PoList::class)->name('po-list');
-Route::get('/po-list/{po_id}', PODetail::class)->name('po-detail');
-
-Route::get('/ma-list', MAList::class)->name('ma-list');
-Route::get('/po-list/{po_id}/ma-list/{ma_id}', MADetail::class)->name('ma-detail');
-
-Route::get('/smr-list', SMRList::class)->name('smr-list');
-Route::get('/po-list/{po_id}/smr-list/{smr_id}', SMRDetail::class)->name('smr-detail');
-
 Route::get('/import-file', ImportFile::class)->name('import-file');
 
-// routes/web.php
-
-Route::get('/po-list/{po_id}/smr-list/{smr_id}/voucher-create', VoucherCreate::class)->name('voucher-create');
-
-Route::get('/voucher-list', VoucherList::class)->name('voucher-list');
+Route::get('/program-list', Program::class)->name('program');
+Route::get('/program-list/{program_id}/project-list', Project::class)->name('project-list');
+Route::get('/project/{po}', ProjectDetail::class)->name('project-detail');
+Route::get('/ma-list', MA::class)->name('ma-list');
+Route::get('/smr-list', SMR::class)->name('smr-list');
+Route::get('/voucher-list', Voucher::class)->name('voucher-list');
+Route::get('/ma-list/{ma_id}', MADetail::class)->name('ma-detail');
+Route::get('/smr-list/{smr_id}', SMRDetail::class)->name('smr-detail');
 Route::get('/voucher-list/{voucher_id}', VoucherDetail::class)->name('voucher-detail');
-Route::get('/items', ItemPage::class)->name('items');
+
+Route::get('/inventory-view', Inventory::class)->name('inventory-view');
+// php artisan make:livewire Program
+// php artisan make:livewire Project
+// php artisan make:livewire ProjectDetail
+// php artisan make:livewire MA
+// php artisan make:livewire MADetail
+// php artisan make:livewire SMR
+// php artisan make:livewire SMRDetail
+// php artisan make:livewire Voucher
+// php artisan make:livewire VoucherDetail
+// php artisan make:livewire Inventory
+

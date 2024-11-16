@@ -4,10 +4,10 @@ namespace App\Livewire;
 
 use Livewire\Component;
 
-class MADetail extends Component
+class MA extends Component
 {
     public function render()
     {
-        return view('livewire.m-a-detail');
+        return view('livewire.m-a');
     }
 }

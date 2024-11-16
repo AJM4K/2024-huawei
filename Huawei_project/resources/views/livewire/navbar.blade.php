@@ -22,12 +22,21 @@
                 </a>
             </li>
 
-            <!-- PO List Link -->
+            <!-- Program List Link -->
             <li>
-                <a href="{{ route('po-list') }}" 
+                <a href="{{ route('program') }}" 
                    class="flex items-center px-3 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white transition ease-in-out duration-150">
                     <i class="fas fa-list mr-3"></i>
-                    <span class="font-medium">PO List</span>
+                    <span class="font-medium">Program List</span>
+                </a>
+            </li>
+
+            <!-- Project List Link -->
+            <li>
+                <a href="{{ route('project-list', ['program_id' => 1]) }}" 
+                   class="flex items-center px-3 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white transition ease-in-out duration-150">
+                    <i class="fas fa-list mr-3"></i>
+                    <span class="font-medium">Project List</span>
                 </a>
             </li>
 
@@ -35,7 +44,7 @@
             <li>
                 <a href="{{ route('ma-list') }}" 
                    class="flex items-center px-3 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white transition ease-in-out duration-150">
-                    <i class="fas fa-file-alt mr-3"></i>
+                    <i class="fas fa-list mr-3"></i>
                     <span class="font-medium">MA List</span>
                 </a>
             </li>
@@ -44,7 +53,7 @@
             <li>
                 <a href="{{ route('smr-list') }}" 
                    class="flex items-center px-3 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white transition ease-in-out duration-150">
-                    <i class="fas fa-chart-bar mr-3"></i>
+                    <i class="fas fa-list mr-3"></i>
                     <span class="font-medium">SMR List</span>
                 </a>
             </li>
@@ -53,20 +62,21 @@
             <li>
                 <a href="{{ route('voucher-list') }}" 
                    class="flex items-center px-3 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white transition ease-in-out duration-150">
-                    <i class="fas fa-chart-bar mr-3"></i>
+                    <i class="fas fa-list mr-3"></i>
                     <span class="font-medium">Voucher List</span>
                 </a>
             </li>
 
-              <!-- Item List Link -->
-              <li>
-                <a href="{{ route('items') }}" 
+            <!-- Inventory View Link -->
+            <li>
+                <a href="{{ route('inventory-view') }}" 
                    class="flex items-center px-3 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white transition ease-in-out duration-150">
-                    <i class="fas fa-chart-bar mr-3"></i>
-                    <span class="font-medium">Item List</span>
+                    <i class="fas fa-eye mr-3"></i>
+                    <span class="font-medium">Inventory View</span>
                 </a>
             </li>
 
+           
             <!-- Import File Link -->
             <li>
                 <a href="{{ route('import-file') }}" 
